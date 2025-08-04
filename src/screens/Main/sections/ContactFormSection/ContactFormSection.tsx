@@ -1,10 +1,16 @@
-import React from "react";
+
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
 
-export const ContactFormSection = (): JSX.Element => {
+type ContactFormSectionProps = {
+  selectedServices: string[];
+  removeService: (service: string) => void;
+  serviceTagsMap: Record<string, string>;
+};
+
+export const ContactFormSection = ({ selectedServices, removeService, serviceTagsMap }: ContactFormSectionProps): JSX.Element => {
   // Form field data
   const formFields = [
     { id: "name", label: "ФИО", placeholder: "Ваше имя и фамилия" },
@@ -27,12 +33,8 @@ export const ContactFormSection = (): JSX.Element => {
     },
   ];
 
-  // Service options
-  const serviceOptions = [
-    "IPv4",
-    "2 Unit Collocation",
-    "Дополнительная розетка 300 Вт",
-  ];
+  // Service options (оставлено для совместимости, но не используется)
+  // const serviceOptions = Object.keys(serviceTagsMap);
 
   return (
     <section className="w-full bg-[#2e6af6]">
@@ -69,16 +71,28 @@ export const ContactFormSection = (): JSX.Element => {
               <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xs md:text-sm lg:text-base leading-normal mb-3">
                 Услуги к заявке:
               </h3>
-              <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8">
-                {serviceOptions.map((service, index) => (
-                  <Badge
-                    key={index}
-                    variant="outline"
-                    className="bg-white rounded-[5px] px-4 md:px-6 py-2 md:py-4 [font-family:'Montserrat',Helvetica] font-semibold text-main-blue text-xs md:text-sm lg:text-base leading-normal h-auto cursor-pointer border-0"
-                  >
-                    {service}
-                  </Badge>
-                ))}
+              <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 min-h-[40px]">
+                {selectedServices.length === 0 ? (
+                  <span className="text-white opacity-70">ничего не выбрано</span>
+                ) : (
+                  selectedServices.map((service) => (
+                    <Badge
+                      key={service}
+                      variant="outline"
+                      className="bg-white rounded-[5px] px-4 md:px-6 py-2 md:py-4 [font-family:'Montserrat',Helvetica] font-semibold text-main-blue text-xs md:text-sm lg:text-base leading-normal h-auto cursor-pointer border-0 flex items-center gap-2"
+                    >
+                      {serviceTagsMap[service] || service}
+                      <button
+                        type="button"
+                        className="ml-2 text-main-blue hover:text-red-500 text-lg font-bold"
+                        onClick={() => removeService(service)}
+                        aria-label="Удалить услугу"
+                      >
+                        ×
+                      </button>
+                    </Badge>
+                  ))
+                )}
               </div>
             </div>
           </form>

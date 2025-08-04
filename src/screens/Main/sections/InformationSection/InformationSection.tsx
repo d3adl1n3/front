@@ -4,7 +4,13 @@ import { ServerUnitsSection } from "../ServerUnitsSection/ServerUnitsSection";
 import { InfrastructureSection } from "../InfrastructureSection/InfrastructureSection";
 import { AdditionalServicesSection } from "../AdditionalServicesSection/AdditionalServicesSection";
 
-export const InformationSection = (): JSX.Element => {
+type InformationSectionProps = {
+  addService: (service: string) => void;
+  selectedServices: string[];
+  serviceTagsMap: Record<string, string>;
+};
+
+export const InformationSection = ({ addService, selectedServices, serviceTagsMap }: InformationSectionProps): JSX.Element => {
   // Server unit data for the first section
   const serverUnits = [
     { id: 1, name: "1 U", power: "250 Вт", bandwidth: "300 мбит/с", price: "от 5000₽/мес" },
@@ -64,9 +70,19 @@ export const InformationSection = (): JSX.Element => {
   return (
     <section className="w-full">
       <div className="container mx-auto px-4 py-16">
-        <ServerUnitsSection serverUnits={serverUnits} />
+        <ServerUnitsSection
+          serverUnits={serverUnits}
+          addService={addService}
+          selectedServices={selectedServices}
+          serviceTagsMap={serviceTagsMap}
+        />
         <InfrastructureSection processSteps={processSteps} featureBadges={featureBadges} />
-        <AdditionalServicesSection additionalServices={additionalServices} />
+        <AdditionalServicesSection
+          additionalServices={additionalServices}
+          addService={addService}
+          selectedServices={selectedServices}
+          serviceTagsMap={serviceTagsMap}
+        />
       </div>
     </section>
   );

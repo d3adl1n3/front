@@ -11,10 +11,16 @@ interface AdditionalService {
 
 interface AdditionalServicesSectionProps {
   additionalServices: AdditionalService[];
+  addService: (service: string) => void;
+  selectedServices: string[];
+  serviceTagsMap: Record<string, string>;
 }
 
 export const AdditionalServicesSection: React.FC<AdditionalServicesSectionProps> = ({
   additionalServices,
+  addService,
+  selectedServices,
+  serviceTagsMap,
 }) => (
   <div className="relative w-full">
     <h2 className="text-center font-['Montserrat',Helvetica] font-extrabold text-black text-[30px] leading-[30px] pt-[68px] pb-[82px]">
@@ -28,7 +34,6 @@ export const AdditionalServicesSection: React.FC<AdditionalServicesSectionProps>
             className="w-full h-[120px] bg-mainwhite rounded-[10px] border-0 shadow-none"
           >
             <CardContent className="flex justify-between items-center px-[72px] py-6 h-full">
-
               {/* 1. Название: ширина увеличена на 50px до 290px */}
               <div className="w-[290px] flex-shrink-0 font-['Montserrat',Helvetica] font-semibold text-main-black text-[20px] leading-[20px]">
                 {service.name}
@@ -49,17 +54,22 @@ export const AdditionalServicesSection: React.FC<AdditionalServicesSectionProps>
               </div>
 
               {/* 4. Кнопка */}
-              <Button
-                variant="ghost"
-                className="w-12 h-12 p-0 rounded-full flex-shrink-0"
+              <button
+                type="button"
+                className="w-16 h-16 rounded-full flex-shrink-0 flex items-center justify-center border-0 bg-transparent focus:outline-none"
+                onClick={() => addService(service.name)}
+                disabled={selectedServices.includes(service.name)}
+                aria-label="Добавить услугу"
+                style={{ padding: 0 }}
               >
                 <img
-                  className="w-12 h-12"
-                  alt="Button"
                   src="https://c.animaapp.com/mdvkwjd1qCbVGi/img/button.svg"
+                  alt="Добавить услугу"
+                  className="w-16 h-16"
+                  draggable={false}
+                  style={{ pointerEvents: 'none', userSelect: 'none' }}
                 />
-              </Button>
-
+              </button>
             </CardContent>
           </Card>
         ))}

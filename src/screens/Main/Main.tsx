@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useCallback } from "react";
 import { Button } from "../../components/ui/button";
 import {
   NavigationMenu,
@@ -11,7 +11,28 @@ import { InformationSection } from "./sections/InformationSection/InformationSec
 import { ServicesOverviewSection } from "./sections/ServicesOverview/ServicesOverviewSection";
 import { HeroSection } from "./sections/HeroSection";
 
+// Маппинг сокращённых названий тегов
+const SERVICE_TAGS_MAP: Record<string, string> = {
+  "IPv4": "IPv4",
+  "2 Unit Collocation": "2U",
+  "Дополнительная розетка 300 Вт": "Розетка 300Вт",
+};
+
 export const Main = (): JSX.Element => {
+  // Состояние выбранных услуг (тегов)
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  // Добавить тег
+  const addService = useCallback((service: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(service) ? prev : [...prev, service]
+    );
+  }, []);
+
+  // Удалить тег
+  const removeService = useCallback((service: string) => {
+    setSelectedServices((prev) => prev.filter((s) => s !== service));
+  }, []);
   // Navigation menu items
   const navItems = [
     { label: "Размещение сервера", href: "#server" },
@@ -58,8 +79,16 @@ export const Main = (): JSX.Element => {
         {/* Main Content Sections */}
         <main className="flex flex-col w-full">
           <ServicesOverviewSection />
-          <InformationSection />
-          <ContactFormSection />
+          <InformationSection
+            addService={addService}
+            selectedServices={selectedServices}
+            serviceTagsMap={SERVICE_TAGS_MAP}
+          />
+          <ContactFormSection
+            selectedServices={selectedServices}
+            removeService={removeService}
+            serviceTagsMap={SERVICE_TAGS_MAP}
+          />
 
           {/* Location Section */}
           <section className="flex flex-col items-center py-[32px]">

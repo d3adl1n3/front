@@ -1,6 +1,8 @@
+
 import { TrendingUpIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+
 
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
@@ -23,7 +25,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
           <h3 className="font-['Montserrat',Helvetica] font-extrabold text-black text-[32px] md:text-[40px] leading-[40px] md:leading-[52px] mb-2">
             поколения в Новосибирске
           </h3>
-          {/* Кнопка */}
+          {/* Кнопка "Оставить заявку" */}
           <div className="mt-10 w-full">
             <Button className="w-full sm:w-[400px] h-[53px] px-[32px] sm:px-[58px] py-[17px] bg-[#0066ff] rounded-md text-[18px] sm:text-[18.6px] font-['Montserrat',Helvetica] font-bold text-[#edf7ff]">
               Оставить заявку
