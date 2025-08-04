@@ -28,37 +28,43 @@ export const ServerUnitsSection: React.FC<ServerUnitsSectionProps> = ({ serverUn
             key={unit.id}
             className="w-full h-[120px] bg-mainwhite rounded-[10px] border-0 shadow-none"
           >
-            <CardContent className="flex items-center justify-between px-[40px] py-[32px] h-full">
-              <div className="w-[180px] font-['Montserrat',Helvetica] font-semibold text-main-black text-[24px] leading-[24px] pl-[20px]">
+            {/* Горизонтальные паддинги слева/справа — 3×gap (72px) */}
+            <CardContent className="flex items-center justify-between px-[72px] py-6 gap-6 h-full">
+
+              {/* Название */}
+              <div className="font-['Montserrat',Helvetica] font-semibold text-main-black text-[24px] leading-[24px]">
                 {unit.name}
               </div>
-              <div className="flex items-center justify-center flex-1 px-[24px]">
-                {!unit.hideSpecs && (
-                  <div className="flex items-start gap-[20px]">
-                    <Badge className="px-[18px] py-[11px] bg-main-blue rounded-[5px] font-['Montserrat',Helvetica] font-semibold text-[15px] leading-[15px] text-mainwhite">
-                      {unit.power}
-                    </Badge>
-                    <Badge className="px-[18px] py-[11px] bg-[#2d69f633] text-main-blue rounded-[5px] font-['Montserrat',Helvetica] font-semibold text-[15px] leading-[15px]">
-                      {unit.bandwidth}
-                    </Badge>
-                  </div>
-                )}
+
+              {/* Спецификации */}
+              {!unit.hideSpecs && (
+                <div className="flex items-center gap-4">
+                  <Badge className="px-[18px] py-[11px] bg-main-blue rounded-[5px] font-['Montserrat',Helvetica] font-semibold text-[15px] leading-[15px] text-mainwhite">
+                    {unit.power}
+                  </Badge>
+                  <Badge className="px-[18px] py-[11px] bg-[#2d69f633] text-main-blue rounded-[5px] font-['Montserrat',Helvetica] font-semibold text-[15px] leading-[15px]">
+                    {unit.bandwidth}
+                  </Badge>
+                </div>
+              )}
+
+              {/* Цена */}
+              <div className="text-center font-['Montserrat',Helvetica] font-medium text-main-black text-[18px] leading-[18px]">
+                {unit.price}
               </div>
-              <div className="w-[150px] text-center font-['Montserrat',Helvetica] font-medium text-main-black text-[18px] leading-[18px] px-[18px]">
-                {unit.price || "от 5000₽/мес"}
-              </div>
-              <div className="w-[52px] flex justify-center">
-                <Button
-                  className="w-[52px] h-[52px] p-0 rounded-full bg-transparent border-0"
-                  variant="ghost"
-                >
-                  <img
-                    className="w-[52px] h-[52px]"
-                    alt="Button"
-                    src="https://c.animaapp.com/mdvkwjd1qCbVGi/img/button.svg"
-                  />
-                </Button>
-              </div>
+
+              {/* Кнопка */}
+              <Button
+                variant="ghost"
+                className="w-12 h-12 p-0 rounded-full"
+              >
+                <img
+                  className="w-12 h-12"
+                  alt="Button"
+                  src="https://c.animaapp.com/mdvkwjd1qCbVGi/img/button.svg"
+                />
+              </Button>
+
             </CardContent>
           </Card>
         ))}

@@ -56,12 +56,12 @@ export const Main = (): JSX.Element => {
           <Logo />
 
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-[32px] items-center">
+            <NavigationMenuList className="flex gap-[36px] items-center">
               {navItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   <NavigationMenuLink
                     href={item.href}
-                    className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px] leading-[20px] whitespace-nowrap"
+                    className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[18px] leading-[18px] whitespace-nowrap"
                   >
                     {item.label}
                   </NavigationMenuLink>
@@ -80,6 +80,7 @@ export const Main = (): JSX.Element => {
         <main className="flex flex-col w-full">
           <ServicesOverviewSection />
           <InformationSection />
+          <ContactFormSection />
 
           {/* Location Section */}
           <section className="flex flex-col items-center py-[32px]">
@@ -122,8 +123,6 @@ export const Main = (): JSX.Element => {
               </div>
             </div>
           </section>
-
-          <ContactFormSection />
         </main>
 
         {/* Footer */}
@@ -131,12 +130,12 @@ export const Main = (): JSX.Element => {
           <Logo />
 
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-[32px] items-center">
+            <NavigationMenuList className="flex gap-[36px] items-center">
               {navItems.map((item, index) => (
                 <NavigationMenuItem key={`footer-${index}`}>
                   <NavigationMenuLink
                     href={item.href}
-                    className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px] leading-[20px] whitespace-nowrap"
+                    className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[18px] leading-[18px] whitespace-nowrap"
                   >
                     {item.label}
                   </NavigationMenuLink>
