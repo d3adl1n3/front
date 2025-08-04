@@ -18,7 +18,7 @@ export const AdditionalServicesSection: React.FC<AdditionalServicesSectionProps>
     <h2 className="text-center font-['Montserrat',Helvetica] font-extrabold text-black text-[30px] leading-[30px] pt-[68px] pb-[82px]">
       Прочие услуги
     </h2>
-    <div className="px-[190px] pb-[90px]">
+    <div className="container mx-auto px-4 pb-[90px]">
       <div className="space-y-[15px]">
         {additionalServices.map((service, index) => (
           <Card

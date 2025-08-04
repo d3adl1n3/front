@@ -15,7 +15,7 @@ interface InfrastructureSectionProps {
 
 export const InfrastructureSection: React.FC<InfrastructureSectionProps> = ({ processSteps, featureBadges }) => (
   <div className="w-full bg-[#f6f6f6] py-[70px]">
-    <div className="px-[190px]">
+    <div className="container mx-auto px-4">
       <div className="flex items-center justify-center gap-[20px] mb-[20px]">
         <div className="relative w-[50px] h-[50px] bg-[url(https://c.animaapp.com/mdvkwjd1qCbVGi/img/union.svg)]">
           <div className="relative w-[21px] h-[21px] top-[14px] left-[14px] bg-[url(https://c.animaapp.com/mdvkwjd1qCbVGi/img/check.svg)]" />

@@ -21,7 +21,7 @@ export const ServerUnitsSection: React.FC<ServerUnitsSectionProps> = ({ serverUn
     <h2 className="text-center font-['Montserrat',Helvetica] font-extrabold text-black text-[30px] leading-[30px] pt-[68px] pb-[82px]">
       Размещение сервера
     </h2>
-    <div className="px-[190px] pb-[90px]">
+    <div className="container mx-auto px-4 pb-[90px]">
       <div className="space-y-[15px]">
         {serverUnits.map((unit) => (
           <Card

@@ -49,7 +49,7 @@ export const Main = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-[#f6f6f6] flex flex-row justify-center w-full min-w-[1920px]">
+    <div className="bg-[#f6f6f6] flex flex-row justify-center w-full min-w-full">
       <div className="bg-[#f6f6f6] w-[1920px] relative">
         {/* Header Navigation */}
         <header className="flex justify-between items-center px-[190px] py-[50px] w-full">

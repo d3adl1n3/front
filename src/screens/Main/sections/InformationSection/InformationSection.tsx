@@ -62,10 +62,12 @@ export const InformationSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
-      <ServerUnitsSection serverUnits={serverUnits} />
-      <InfrastructureSection processSteps={processSteps} featureBadges={featureBadges} />
-      <AdditionalServicesSection additionalServices={additionalServices} />
+    <section className="w-full">
+      <div className="container mx-auto px-4 py-16">
+        <ServerUnitsSection serverUnits={serverUnits} />
+        <InfrastructureSection processSteps={processSteps} featureBadges={featureBadges} />
+        <AdditionalServicesSection additionalServices={additionalServices} />
+      </div>
     </section>
   );
 };
