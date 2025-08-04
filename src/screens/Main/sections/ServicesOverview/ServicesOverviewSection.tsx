@@ -4,7 +4,11 @@ import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 
-export const ServicesOverviewSection = (): JSX.Element => {
+interface ServicesOverviewSectionProps {
+  onLeaveRequestClick?: () => void;
+}
+
+export const ServicesOverviewSection = ({ onLeaveRequestClick }: ServicesOverviewSectionProps): JSX.Element => {
   return (
     <section className="relative w-full bg-[url(https://c.animaapp.com/mdvkwjd1qCbVGi/img/20250802-2001-abstract-liquid-elegance-simple-compose-01k1ndyn2e.png)] bg-cover bg-center">
       <div className="absolute inset-0 bg-[#d5e1fd0d] backdrop-blur-[15px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(15px)_brightness(100%)]" />
@@ -27,7 +31,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
           </h3>
           {/* Кнопка "Оставить заявку" */}
           <div className="mt-10 w-full">
-            <Button className="w-full sm:w-[400px] h-[53px] px-[32px] sm:px-[58px] py-[17px] bg-[#0066ff] rounded-md text-[18px] sm:text-[18.6px] font-['Montserrat',Helvetica] font-bold text-[#edf7ff]">
+            <Button className="w-full sm:w-[400px] h-[53px] px-[32px] sm:px-[58px] py-[17px] bg-[#0066ff] rounded-md text-[18px] sm:text-[18.6px] font-['Montserrat',Helvetica] font-bold text-[#edf7ff]" onClick={onLeaveRequestClick} type="button">
               Оставить заявку
             </Button>
           </div>

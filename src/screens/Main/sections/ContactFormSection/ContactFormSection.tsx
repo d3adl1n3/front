@@ -37,7 +37,7 @@ export const ContactFormSection = ({ selectedServices, removeService, serviceTag
   // const serviceOptions = Object.keys(serviceTagsMap);
 
   return (
-    <section className="w-full bg-[#2e6af6]">
+    <section className="w-full bg-[#2e6af6]" id="contact-form">
       <div className="container mx-auto px-4 py-16 flex flex-col items-center">
         <h2 className="font-semibold text-lg sm:text-xl md:text-2xl lg:text-3xl leading-normal text-white [font-family:'Montserrat',Helvetica] mb-6 md:mb-10">
           Заявка/Расчет

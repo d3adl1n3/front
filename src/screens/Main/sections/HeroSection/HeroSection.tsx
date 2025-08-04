@@ -29,11 +29,13 @@ const Logo = () => (
 
 interface HeroSectionProps {
   navItems: { label: string; href: string }[];
+  selectedServicesCount?: number;
+  onLeaveRequestClick?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ navItems }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ navItems, selectedServicesCount, onLeaveRequestClick }) => {
   return (
-    <header className="flex justify-between items-center px-[190px] py-[50px] w-full">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm flex justify-between items-center px-[190px] py-[18px] w-full transition-shadow">
       <Logo />
       <NavigationMenu>
         <NavigationMenuList className="flex gap-[36px] items-center">
@@ -48,12 +50,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ navItems }) => {
             </NavigationMenuItem>
           ))}
           <NavigationMenuItem>
-            <Button className="w-[230px] h-[49px] bg-[#0066ff] rounded-[4.56px] [font-family:'Montserrat',Helvetica] font-semibold text-white text-[18px] leading-[18px] flex-shrink-0">
-              Оставить заявку
-            </Button>
+            <div className="relative">
+              <Button
+                className="w-[230px] h-[49px] bg-[#0066ff] rounded-[4.56px] [font-family:'Montserrat',Helvetica] font-semibold text-white text-[18px] leading-[18px] flex-shrink-0"
+                onClick={onLeaveRequestClick}
+                type="button"
+              >
+                Оставить заявку
+              </Button>
+              {typeof selectedServicesCount === 'number' && selectedServicesCount > 0 && (
+                <span className="absolute -top-3 -right-3 flex items-center justify-center w-7 h-7 rounded-full bg-red-600 text-white text-[16px] font-bold border-2 border-white shadow-md z-10">
+                  {selectedServicesCount}
+                </span>
+              )}
+            </div>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
   );
 };
+
+export { HeroSection };

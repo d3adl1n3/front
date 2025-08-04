@@ -60,7 +60,7 @@ export const ServerUnitsSection: React.FC<ServerUnitsSectionProps> = ({ serverUn
               {/* 4. Кнопка */}
               <button
                 type="button"
-                className="w-16 h-16 rounded-full flex-shrink-0 flex items-center justify-center border-0 bg-transparent focus:outline-none"
+                className="w-16 h-16 rounded-full flex-shrink-0 flex items-center justify-center border-0 bg-transparent focus:outline-none group"
                 onClick={() => addService(unit.name)}
                 disabled={selectedServices.includes(unit.name)}
                 aria-label="Добавить услугу"
@@ -69,7 +69,7 @@ export const ServerUnitsSection: React.FC<ServerUnitsSectionProps> = ({ serverUn
                 <img
                   src="https://c.animaapp.com/mdvkwjd1qCbVGi/img/button.svg"
                   alt="Добавить услугу"
-                  className="w-16 h-16"
+                  className="w-16 h-16 transition duration-150 group-hover:brightness-75"
                   draggable={false}
                   style={{ pointerEvents: 'none', userSelect: 'none' }}
                 />

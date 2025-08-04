@@ -70,15 +70,29 @@ export const Main = (): JSX.Element => {
     hours: "🕒 Режим работы: Пн–Пт с 10:00 до 19:00",
   };
 
+  // Плавный скролл к форме заявки
+  const handleLeaveRequestClick = () => {
+    const el = document.getElementById("contact-form");
+    if (el) {
+      const header = document.querySelector('header.sticky');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const elTop = el.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elTop - headerHeight - 12, // небольшой дополнительный отступ
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <div className="bg-[#f6f6f6] flex flex-row justify-center w-full min-w-full">
       <div className="bg-[#f6f6f6] w-[1920px] relative">
         {/* Hero Section (Header Navigation) */}
-        <HeroSection navItems={navItems} />
+        <HeroSection navItems={navItems} selectedServicesCount={selectedServices.length} onLeaveRequestClick={handleLeaveRequestClick} />
 
         {/* Main Content Sections */}
         <main className="flex flex-col w-full">
-          <ServicesOverviewSection />
+          <ServicesOverviewSection onLeaveRequestClick={handleLeaveRequestClick} />
           <InformationSection
             addService={addService}
             selectedServices={selectedServices}
@@ -150,7 +164,7 @@ export const Main = (): JSX.Element => {
                 </NavigationMenuItem>
               ))}
               <NavigationMenuItem>
-                <Button className="w-[230px] h-[49px] bg-[#0066ff] rounded-[4.56px] [font-family:'Montserrat',Helvetica] font-semibold text-white text-[18px] leading-[18px] flex-shrink-0">
+                <Button className="w-[230px] h-[49px] bg-[#0066ff] rounded-[4.56px] [font-family:'Montserrat',Helvetica] font-semibold text-white text-[18px] leading-[18px] flex-shrink-0" onClick={handleLeaveRequestClick} type="button">
                   Оставить заявку
                 </Button>
               </NavigationMenuItem>
