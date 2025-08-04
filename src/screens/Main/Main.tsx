@@ -9,6 +9,7 @@ import {
 import { ContactFormSection } from "./sections/ContactFormSection";
 import { InformationSection } from "./sections/InformationSection/InformationSection";
 import { ServicesOverviewSection } from "./sections/ServicesOverview/ServicesOverviewSection";
+import { HeroSection } from "./sections/HeroSection";
 
 export const Main = (): JSX.Element => {
   // Navigation menu items
@@ -51,30 +52,8 @@ export const Main = (): JSX.Element => {
   return (
     <div className="bg-[#f6f6f6] flex flex-row justify-center w-full min-w-full">
       <div className="bg-[#f6f6f6] w-[1920px] relative">
-        {/* Header Navigation */}
-        <header className="flex justify-between items-center px-[190px] py-[50px] w-full">
-          <Logo />
-
-          <NavigationMenu>
-            <NavigationMenuList className="flex gap-[36px] items-center">
-              {navItems.map((item, index) => (
-                <NavigationMenuItem key={index}>
-                  <NavigationMenuLink
-                    href={item.href}
-                    className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[18px] leading-[18px] whitespace-nowrap"
-                  >
-                    {item.label}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <Button className="w-[230px] h-[49px] bg-[#0066ff] rounded-[4.56px] [font-family:'Montserrat',Helvetica] font-semibold text-white text-[18px] leading-[18px] flex-shrink-0">
-                  Оставить заявку
-                </Button>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </header>
+        {/* Hero Section (Header Navigation) */}
+        <HeroSection navItems={navItems} />
 
         {/* Main Content Sections */}
         <main className="flex flex-col w-full">
